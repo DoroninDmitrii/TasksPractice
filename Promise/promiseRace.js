@@ -1,22 +1,22 @@
-const check = (arg, sec) => {
-  return Promise.race([
-    arg(),
-    new Promise((resolve, reject) => {
-      setTimeout(() => {
-        reject(new Error('timeout'));
-      }, sec);
-    }),
-  ]);
-};
+const promise1 = new Promise(resolve => setTimeout(resolve, 1000, 'one'));
+const promise2 = new Promise(resolve => setTimeout(resolve, 2000, 'two'));
 
-const req = () => {
+function promiseRace(promises) {
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve('Hello');
-    }, 1000);
-  });
-};
+    for (let i = 0; i < promises.length; i++) {
+      promises[i].
+      then(value => {
+        resolve(value)
+      })
+      .catch(error => reject(error))
+    }
+  })
+}
 
-check(req, 2000)
-  .then((data) => console.log(data))
-  .catch((err) => console.error(err));
+promiseRace([promise1, promise2])
+.then(value => {
+  console.log('Resolved:', value)
+})
+.catch(reason => {
+  console.error('Rejected:', reason)
+})
