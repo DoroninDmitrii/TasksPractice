@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button</title>
+</head>
+<body>
+
+  <button>
+    Click
+  </button>
+
+  <script>
+
+    const button = document.querySelector('button');
+    
+    const once = (element, type) => {
+      return new Promise((resolve, reject) => {
+          const eventHandler = (event) => {
+            resolve(event);
+          }
+          element.addEventListener(type, eventHandler);
+        })
+    }
+      
+    once(button, 'click').then((e) => console.log(e));
+
+  </script>
+  
+</body>
+</html>
