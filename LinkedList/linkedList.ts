@@ -51,6 +51,33 @@ export class LinkedList {
     }
     return current;
   }
+  shift() {
+    
+    if (!this.head) return undefined;
+    
+    let currentHead = this.head;
+    this.head = currentHead.next;
+    this.length--;
+    
+    if (this.length === 0) {
+      this.tail = null;
+    }
+
+    return currentHead;
+  }
+  unshift(val: unknown) {
+    let newNode = new Node(val);
+
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = this.head;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length++;
+    return this;
+  }
 }
 
 const list = new LinkedList();
@@ -58,4 +85,7 @@ list.push('HEY');
 list.push('HI');
 list.push('HI');
 
-console.log(list);
+console.log(list.shift());
+console.log(list.shift());
+console.log(list.shift());
+console.log(list.shift());
