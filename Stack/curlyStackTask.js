@@ -66,6 +66,41 @@ function isValid(s) {
 
 console.log(isValid(s4))
 
+const isValid = (s) => {
+  const stack = [];
+  const map = {
+      '(': ')',
+      '[': ']',
+      '{': '}'
+  };
+
+  for (let i = 0; i < s.length; i++) {
+      if (s[i] === '(' || s[i] === '[' || s[i] === '{') {
+          stack.push(s[i]);
+      } else {
+          const last = stack.pop();
+          if (s[i] !== map[last]) {
+              return false;
+          }
+      }
+  }
+
+  return stack.length === 0;
+};
+
+// Example usage
+const input1 = "()";
+console.log(isValid(input1)); // Output: true
+
+const input2 = "()[]{}";
+console.log(isValid(input2)); // Output: true
+
+const input3 = "(]";
+console.log(isValid(input3)); // Output: false
+
+const input4 = "([)]";
+console.log(isValid(input4)); // Output: false
+
 
 
 
