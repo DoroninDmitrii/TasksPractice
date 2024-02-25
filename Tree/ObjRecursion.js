@@ -73,3 +73,23 @@ function log(obj) {
 }
 
 console.log(log(obj))
+
+function sumObj(obj) {
+  const stack = [obj];
+  let result = 0;
+
+  while (stack.length > 0) {
+    const node = stack.pop();
+
+    for (let key in node) {
+      if (typeof node[key] === 'number') {
+        result += node[key];
+      } else if (typeof node[key] === 'object') {
+        stack.push(node[key])
+      }
+    }
+  }
+    return result;
+}
+
+console.log(sumObj(obj));
