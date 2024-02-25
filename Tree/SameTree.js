@@ -17,20 +17,38 @@ root2.left.left = new Node(3);
 root2.left.right = new Node(5);
 root2.right.left = new Node(2);
 
-export function isSameTree(p, q) {
+// export function isSameTree(p, q) {
 
-  const stack = []
-  const stack2 = []
+//   const stack = []
+//   const stack2 = []
 
-  if (!p || !q) return
+//   if (!p || !q) return
 
-  if (p.val === q.val) return true
+//   if (p.val === q.val) return true
 
-  if (p.val !== q.val) {
-    isSameTree(p.left, stack.push(p.left)) && isSameTree(q.right, stack2.push(q.right))
+//   if (p.val !== q.val) {
+//     isSameTree(p.left, stack.push(p.left)) && isSameTree(q.right, stack2.push(q.right))
+//   }
+// return stack === stack2 ? true : false
+// }
+
+// console.log(isSameTree(root, root2))
+
+let isSameTree = function (p, q) {
+  if (!p && !q) {
+    return true;
   }
-return stack === stack2 ? true : false
-}
 
-console.log(isSameTree(root, root2))
+  if (!p || !q) {
+    return false;
+  }
+
+  if (p.val != q.val) {
+    return false;
+  }
+
+  return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+};
+
+console.log(isSameTree(root, root2));
 

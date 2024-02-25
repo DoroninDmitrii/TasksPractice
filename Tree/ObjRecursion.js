@@ -47,29 +47,22 @@ let obj = {
 
 // wide 
 
-function log(obj) {
-  const queue = [obj]
+function sumObj(obj) {
+  const stack = [obj];
+  let result = 0;
 
-  while (true) {
+  while (stack.length > 0) {
+    const node = stack.pop();
 
-    const obj = queue.shift()
-
-    for (const key in obj) {
-      if (!obj.hasOwnProperty(key)) {
-        continue
+    for (let key in node) {
+      if (typeof node[key] === 'number') {
+        result += node[key];
+      } else if (typeof node[key] === 'object') {
+        stack.push(node[key])
       }
-      const value = obj[key]
-
-      if (typeof value === 'number') {
-        console.log(value)
-      } else {
-        queue.push(value)
-      }
-    }
-    if (queue.length === 0) {
-      return
     }
   }
+  return result;
 }
 
-console.log(log(obj))
+console.log(sumObj(obj));
