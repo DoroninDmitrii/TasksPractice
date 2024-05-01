@@ -21,7 +21,6 @@ const Anagram = (str1, srt2) => {
     if (!lookup[current]) {
       return false;
     } else {
-      console.log(lookup[current])
       lookup[current] = lookup[current] - 1;
     }
   }
