@@ -25,4 +25,5 @@ const eraseOverlapIntervals = intervals => {
   return count;
 };
 
-console.log(eraseOverlapIntervals(intervals));
+// console.log(eraseOverlapIntervals(intervals));
+

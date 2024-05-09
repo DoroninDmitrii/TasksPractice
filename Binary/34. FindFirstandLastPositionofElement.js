@@ -1,9 +1,9 @@
-const nums = [5,7,7,8,8,10]; 
+const nums = [5, 7, 7, 8, 8, 10];
 const target = 8;
 // Output: [3,4]
 
 const findFirstOccurance = (nums, target) => {
-  
+
   let left = 0;
   let right = nums.length - 1;
   let firstOccurance;
@@ -26,7 +26,7 @@ const findFirstOccurance = (nums, target) => {
 // console.log(findFirstOccurance(nums, target));
 
 const findSecondOccurance = (nums, target) => {
-  
+
   let left = 0;
   let right = nums.length - 1;
   let secondOccurance;
@@ -53,4 +53,3 @@ const searchRange = (nums, target) => {
 }
 
 // console.log(searchRange(nums, target));
-

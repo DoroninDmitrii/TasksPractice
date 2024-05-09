@@ -43,28 +43,28 @@ let s4 = '{[]}';
 // console.log(isValid(s6))
 
 
-function isValid(s) {
+// function isValid(s) {
 
-  const stack = []
+//   const stack = []
 
-  let brackets = {
-    ')': '(',
-    ']': '[',
-    '}': '{'
-  }
+//   let brackets = {
+//     ')': '(',
+//     ']': '[',
+//     '}': '{'
+//   }
 
-  for (const current of s) {
-    if (current in brackets) {
-      if (brackets[current] !== stack.pop())
-        return false
-    } else {
-      stack.push(current)
-    }
-  }
-  return !stack.length
-}
+//   for (const current of s) {
+//     if (current in brackets) {
+//       if (brackets[current] !== stack.pop())
+//         return false
+//     } else {
+//       stack.push(current)
+//     }
+//   }
+//   return !stack.length
+// }
 
-console.log(isValid(s4))
+// console.log(isValid(s4))
 
 const isValid = (s) => {
   const stack = [];
@@ -75,11 +75,13 @@ const isValid = (s) => {
   };
 
   for (let i = 0; i < s.length; i++) {
-      if (s[i] === '(' || s[i] === '[' || s[i] === '{') {
-          stack.push(s[i]);
+    const current = s[i];
+    
+      if (current === '(' || current === '[' || current === '{') {
+          stack.push(current);
       } else {
           const last = stack.pop();
-          if (s[i] !== map[last]) {
+          if (current !== map[last]) {
               return false;
           }
       }
@@ -90,16 +92,16 @@ const isValid = (s) => {
 
 // Example usage
 const input1 = "()";
-console.log(isValid(input1)); // Output: true
+// console.log(isValid(input1)); // Output: true
 
 const input2 = "()[]{}";
-console.log(isValid(input2)); // Output: true
+// console.log(isValid(input2)); // Output: true
 
 const input3 = "(]";
 console.log(isValid(input3)); // Output: false
 
 const input4 = "([)]";
-console.log(isValid(input4)); // Output: false
+// console.log(isValid(input4)); // Output: false
 
 
 
