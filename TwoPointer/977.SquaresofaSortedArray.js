@@ -20,4 +20,14 @@ const sortedSquares = (nums) => {
 };
 
 
-console.log(sortedSquares(nums))
+console.log(sortedSquares(nums));
+
+// const sortedSquares = nums => {
+//   for (let i = 0; i < nums.length; i++) {
+//     nums[i] = nums[i] ** 2;
+//   }
+  
+//   return nums.sort((a, b) => a - b);
+// };
+
+// console.log(sortedSquares(nums));
