@@ -7,13 +7,9 @@ class Node {
 
 const list1 = new Node(1);
 list1.next = new Node(7);
-list1.next.next = new Node(12);
-list1.next.next.next = new Node(15);
 
 const list2 = new Node(2);
 list2.next = new Node(5);
-list2.next.next = new Node(10);
-list2.next.next.next = new Node(19);
 
 
 const mergeTwoLists = function (firstList, secondList) {

@@ -1,21 +1,21 @@
-const arr = [0, 10, 12, 3, 8, 9];
-const target = 22;
+const arr = [3,2,4];
+const target = 6;
 
 const sumOfTwo = (arr, target) => {
   const map = {};
   
   for (let i = 0; i < arr.length; i++) {
     const current = arr[i];
-    map[current] = current;
+    map[current] = i;
   }
   
   for (let i = 0; i < arr.length; i++) {
     const current = arr[i];
     
     const value = target - current;
-    
-    if (map[value]) {
-      return [map[value], current];
+
+    if (map[value] && map[value] !== i) {
+      return [i, map[value]];
     }
   }
 }

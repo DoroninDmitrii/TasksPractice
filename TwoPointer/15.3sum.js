@@ -1,5 +1,4 @@
 const nums = [-1, 0, 1, 2, -1, -4];
-const nums2 = [0, 1, 1];
 
 const threeSum = (nums) => {
   const sortNums = nums.sort((a, b) => a - b);
