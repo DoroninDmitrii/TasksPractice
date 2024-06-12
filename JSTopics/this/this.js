@@ -1,15 +1,27 @@
 // In a regular function, the this keyword refers to the object from which you call the function. In an arrow function, the this keyword refers to the object from which you define the function.
-let user = {
-  firstName: "Ilya",
-  sayHi() {
-    return () => {
-      console.log(this.firstName);
-    };
-  }
-};
+// let user = {
+//   firstName: "Ilya",
+//   sayHi() {
+//     return () => {
+//       console.log(this.firstName);
+//     };
+//   }
+// };
 
-const check = user.sayHi();
-console.log(check()); // Logs "Ilya"
+// const check = user.sayHi();
+// console.log(check()); // Logs "Ilya"
+
+function sum(a) {
+  let res = a;
+  return function (b) {
+    return res + b;
+  }
+}
+
+let work = sum(5)(-12);
+
+console.log(work);
+
 
 // In this case:
 
@@ -27,8 +39,8 @@ let user = {
   }
 };
 
-const check = user.sayHi();
-console.log(check()); // Logs undefined
+// const check = user.sayHi();
+// console.log(check()); // Logs undefined
 
 // In this case:
 

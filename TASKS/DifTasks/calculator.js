@@ -17,8 +17,7 @@ const chain = (fns) => {
     }
   })
   fns.execute = () => {
-    let currentResult = result;
-    return currentResult;
+    return result;
   }
   return fns;
 }
