@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="parent">
+    <button id="child">Click</button>
+  </div>
+  
+  <script>
+    document.getElementById('parent').addEventListener('click', (event) => {
+      console.log('target:', event.target)
+      console.log('currentTarget:', event.currentTarget)
+    })
+  </script>
+</body>
+</html>
+
+<!-- target
+Definition: target refers to the element that triggered the event.
+Description: It is the element that actually received the event. This is the element that the user interacted with (e.g., the specific button that was clicked within a form).
+Example: If you click a button inside a div, the target will be the button.
+currentTarget
+Definition: currentTarget refers to the element to which the event handler is attached.
+Description: It represents the element that is currently processing the event as the event bubbles up or down through the DOM.
+Example: If you have an event listener on a div and you click a button inside that div, the currentTarget will be the div. -->
