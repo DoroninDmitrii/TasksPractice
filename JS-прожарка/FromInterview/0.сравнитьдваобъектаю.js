@@ -39,10 +39,9 @@ const isEqual = (firstObj, secondObj) => {
   for (let key in firstObj) {
     const isObject = typeof firstObj[key] === 'object' && typeof secondObj[key] === 'object';
 
-    if (isObject) { 
+    if (isObject) {
       if (!isEqual(firstObj[key], secondObj[key])) {
         return false;
-        
       }
     } else if (firstObj[key] !== secondObj[key]) {
       return false;
