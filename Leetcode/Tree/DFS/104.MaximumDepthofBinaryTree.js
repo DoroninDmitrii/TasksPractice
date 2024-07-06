@@ -40,33 +40,64 @@ root.right = new TreeNode(20, new TreeNode(15), new TreeNode(7));
 
 // console.log(maxDepth(root));
 
-// BFS
+// DSF sec variant;
+
 function maxDepth(root) {
-  if (root === null) {
-    return 0;
-  }
+  if (!root) return 0;
 
-  let queue = [root];
   let depth = 0;
+  let stack = [root];
 
-  while (queue.length > 0) {
-    let levelSize = queue.length;
+  while (stack.length > 0) {
+    let levelSize = stack.length;
 
     for (let i = 0; i < levelSize; i++) {
-      let currentNode = queue.shift();
+      const node = stack.pop();
 
-      if (currentNode.left !== null) {
-        queue.push(currentNode.left);
+      if (node.left) {
+        stack.push(node.left);
       }
 
-      if (currentNode.right !== null) {
-        queue.push(currentNode.right);
+      if (node.right) {
+        stack.push(node.right);
       }
     }
-    depth++
+    depth++;
   }
   return depth;
 }
+
+console.log(maxDepth(root));
+
+
+
+// // BFS
+// function maxDepth(root) {
+//   if (root === null) {
+//     return 0;
+//   }
+
+//   let queue = [root];
+//   let depth = 0;
+
+//   while (queue.length > 0) {
+//     let levelSize = queue.length;
+
+//     for (let i = 0; i < levelSize; i++) {
+//       let currentNode = queue.shift();
+
+//       if (currentNode.left !== null) {
+//         queue.push(currentNode.left);
+//       }
+
+//       if (currentNode.right !== null) {
+//         queue.push(currentNode.right);
+//       }
+//     }
+//     depth++
+//   }
+//   return depth;
+// }
 
 
 
