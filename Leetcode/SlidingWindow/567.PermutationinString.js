@@ -19,28 +19,26 @@ const checkInclusion = (s1, s2) => {
   let rigth = 0;
   let requiredLength = s1.length;
 
-  while (rigth < s2.length) {
-    const current = s2[rigth];
+  while (left < s2.length) {
 
-    if (map[current] > 0) {
+    if (map[s2[left]] > 0) {
       requiredLength--
     }
 
-    map[current]--;
-    rigth++;
+    map[s2[left]]--;
+    left++;
 
     if (requiredLength === 0) {
       return true;
     }
 
-    if (rigth - left === s1.length) {
-      if (map[s2[left]] >= 0) {
+    if (left - rigth === s1.length) {
+      if (map[s2[rigth]] >= 0) {
         requiredLength++;
-        map[s2[left]]++;
-        left++
+        map[s2[rigth]]++;
       }
+      rigth++
     }
-
   }
   return false;
 }
