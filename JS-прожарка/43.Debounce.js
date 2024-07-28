@@ -18,5 +18,4 @@ const handleKeyUp = debounce(printCurrentValue, 1000);
 
 document.getElementById('inputField').addEventListener('keyup', function(event) {
   handleKeyUp(event.target);
-})
-
+});
