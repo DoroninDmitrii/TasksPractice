@@ -1,4 +1,4 @@
-const nums = [4, 2, 0, 1];
+// const nums = [4, 2, 0, 1];
 // Output: 8
 
 // const missingNumber = function(nums) {
@@ -14,9 +14,9 @@ const nums = [4, 2, 0, 1];
 
 const missingNumber = function (nums) {
   let n = nums.length;
-  let sum1 = (n * (n + 1)) / 2;
-  let sum2 = nums.reduce((acc, el) => acc + el);
-  return sum1 - sum2;
+  let expectedSum = (n * (n + 1)) / 2;
+  let actualSum = nums.reduce((acc, el) => acc + el);
+  return expectedSum - actualSum;
 };
 
 console.log(missingNumber(nums));

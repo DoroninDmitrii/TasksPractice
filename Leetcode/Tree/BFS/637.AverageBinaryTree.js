@@ -13,28 +13,28 @@ root.left.left = new Node(15);
 root.left.right = new Node(7);
 
 const averageOfLevels = (root) => {
-  const queue = [root]
-  let averageOfLevels = []
+  const queue = [root];
+  let averageOfLevels = [];
   
   while (queue.length) {
-    const length = queue.length
-    let sum = 0
+    const length = queue.length;
+    let sum = 0;
 
     for (let i = 0; i < length; i++) {
-      let root = queue.shift()
-      sum += root.val
+      let root = queue.shift();
+      sum += root.val;
 
       if (root.left) {
-        queue.push(root.left)
+        queue.push(root.left);
       }
 
       if (root.right) {
-        queue.push(root.right)
+        queue.push(root.right);
       }
     }
-    averageOfLevels.push(sum / length)
+    averageOfLevels.push(sum / length);
   }
-  return averageOfLevels
+  return averageOfLevels;
 }
 
-console.log(averageOfLevels(root))
+console.log(averageOfLevels(root));
