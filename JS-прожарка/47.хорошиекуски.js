@@ -1,23 +1,36 @@
-const s = "pwwkew"
-// Output: 3
+// Нужно посчитать все подстроки 
+// в которых нет повторяющихся символов, 
+// а длина самой подстроки равна трем:
 
-const longestSub = s => {
-  const mapObj = new Set();
-  let length = 0;
-  let index = 0;
-  
-  for (let i = 0; i < s.length; i++) {
-    const current = s[i];
-    
-    while (mapObj.has(current)) {
-      mapObj.delete(s[index]);
-      index++
+const countValidSubstring = (str) => {
+
+  let count = 0;
+
+  for (let i = 0; i <= str.length - 3; i++) {
+    const substring = str.slice(i, i + 3);
+
+    if (isUnique(substring)) {
+      count++;
     }
-    mapObj.add(current);
-    
-    length = Math.max(length, mapObj.size)
+
   }
-  return length;
+  return count;
+}
+
+const isUnique = (substring) => {
+  const charSet = new Set();
+
+  for (char of substring) {
+    if (charSet.has(char)) {
+      return false;
+    }
+    charSet.add(char);
+  }
+  return true;
 };
 
-console.log(longestSub(s));
+
+console.log(countValidSubstring('xyzzaz')); // 1
+console.log(countValidSubstring('aababcabc')); // 4
+console.log(countValidSubstring('')); // 0
+console.log(countValidSubstring(' ')); // 0
