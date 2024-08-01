@@ -10,7 +10,23 @@ const cancellable = (generator) => {
 
   const promise = async () => {
     let next = generator.next();
+
+    while (!next.done) {
+      try {
+        let value = await next.value;
+
+        if (isCancelled) {
+          throw 'Cancel';
+        }
+
+        next = generator.next(value);
+      } catch (error) {
+        next = generator.throw(error);
+      }
+    }
+    return next.value;
   }
+  return [cancel, promise()];
 }
 
 
@@ -22,10 +38,10 @@ function* Task() {
   return value;
 }
 
-// const [cancel, promise] = cancellable(Task());
+const [cancel, promise] = cancellable(Task());
 
 // promise.then(console.log); // 'Успешно'
 
-// setTimeout(cancel, 50);
+setTimeout(cancel, 100);
 // promise.catch(console.log); // 'Отмена'
  
