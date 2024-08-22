@@ -38,7 +38,7 @@ const mergeTwoLinkedLists = (nodeFirst, nodeSecond) => {
     current = current.next; // move to the next node; 
   }
 
-  while (secondListPointer) {
+  while (secondListPointer  ) {
     current.next = secondListPointer;
     secondListPointer = secondListPointer.next;
 
