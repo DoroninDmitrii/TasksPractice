@@ -15,16 +15,16 @@
 // .catch(err => console.error(err))
 
 async function get(url, n) {
-  let attempt = 0;
+  let attempts = 0;
 
-  while (arguments < n) {
+  while (attempts < n) {
     try {
       const response = await fetch(url);
       return response.json();
     } catch (err) {
-      arguments++;
+      attempts++;
 
-      if (arguments >= n) {
+      if (attempts >= n) {
         throw err;
       }
     }
