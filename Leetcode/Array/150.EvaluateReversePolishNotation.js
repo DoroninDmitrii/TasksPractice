@@ -28,7 +28,7 @@ const evalRPN = function (tokens) {
       stack.push(Number(token));
     }
   }
-  return Math.floor(stack.pop());
+  return stack.pop();
 };
 
 console.log(evalRPN(tokens));
