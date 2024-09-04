@@ -1,4 +1,4 @@
-export class Observers {
+  export class Observers {
 
   observers = [];
 
