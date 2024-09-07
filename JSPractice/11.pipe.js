@@ -4,10 +4,18 @@ const subtract = (y) => (x) => x - y
 const divide = (y) => (x) => x / y
 
 
-const pipe = (...fns) => (x) => {
-  return fns.reduce((acc, fn) => {
-    return fn(acc);
-  }, x)
+// const pipe = (...fns) => (x) => {
+//   return fns.reduce((acc, fn) => {
+//     return fn(acc);
+//   }, x)
+// }
+
+const pipe = (...fns) => {
+  return function(x) {
+    return fns.reduce((acc, fn) => {
+      return fn(acc);
+    }, x)
+  }
 }
 
 console.log(pipe(
