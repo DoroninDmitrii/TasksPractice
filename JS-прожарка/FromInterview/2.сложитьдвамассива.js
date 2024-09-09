@@ -35,7 +35,8 @@ const sumTwoArr = (arrFirst, arrSecond) => {
   if (currentSum === 1) {
     result.unshift(currentSum);
   }
-
   return result;
 };
+
+console.log(sumTwoArr(arrFirst, arrSecond));
 
