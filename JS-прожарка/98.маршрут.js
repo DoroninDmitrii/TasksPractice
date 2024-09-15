@@ -14,6 +14,7 @@ function findStart(tickets) {
   return null;
 }
 
+
 function orderTickets(tickets) {
   const ticketMap = new Map();
   for (const ticket of tickets) {
