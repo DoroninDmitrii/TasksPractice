@@ -31,13 +31,44 @@ class ATM {
 
     this._total = amount;
 
-      amount && console.log(`Внесено ${amount}`);
+    amount && console.log(`Внесено ${amount}`);
 
-      unrecognizedBills.length > 0 && console.log(`Заберите нераспознанные купюры ${unrecognizedBills}`)
+    unrecognizedBills.length > 0 && console.log(`Заберите нераспознанные купюры ${unrecognizedBills}`)
   }
 
   whithdrow(amount) {
-    
+    if (amount === 0) {
+      console.log("Error: Укажите корректную сумму")
+      return;
+    }
+    const denominations = Object.keys(this.vault).map(Number);
+    let targetAmount = amount;
+    let withdrawal = {};
+
+    for (let i = denominations.length - 1; i >= 0; i--) {
+      const amount = denominations[i];
+      if (targetAmount <= 0) break;
+      const count = this.vault[amount];
+      if (count > 0) {
+        const billsNeeded = Math.min(Math.floor(targetAmount / amount), count);
+        if (billsNeeded > 0) {
+          withdrawal[amount] = billsNeeded;
+          targetAmount -= billsNeeded * amount;
+        }
+      }
+    }
+
+    if (targetAmount > 0) {
+      console.log("Error: Не могу выдать нужную сумму, недостаточно средств");
+      return false;
+    }
+
+    for (let bill in withdrawal) {
+      this.vault[bill] -= withdrawal[bill];
+    }
+
+    this._total -= amount;
+    console.log("Выдано: ", withdrawal);
   }
 
   // возвращает массив купюр который доступен на прием/выдачу
@@ -62,14 +93,13 @@ class ATM {
 }
 
 const atm = new ATM();
-atm.accept; // [ 50, 100, 500, 1000, 2000, 5000 ]
+// atm.accept; // [ 50, 100, 500, 1000, 2000, 5000 ]
 // atm.whithdrow(3500); // Error: Не могу выдать нужную сумму, недостаточно средств
 // atm.deposit([]); // Error: Положите деньги в купюроприемник
 atm.deposit([5000, 1000, 5000, 500, 100, 50, 50]); // Внесено 11700
 atm.deposit([500, 10, 5]); // Внесено 500, Заберите нераспознанные купюры [10, 5]
 // atm.whithdrow(3500); // Error: Не могу выдать нужную сумму, недостаточно купюр
-// atm.whithdrow(2100); // [1000, 500, 500, 100]
+atm.whithdrow(2100); // [1000, 500, 500, 100]
 // atm.whithdrow(0); // Error: Укажите корректную сумму
-console.log(atm.whithdrow())
-atm.total; //10100
-atm.collect; // { '50': 2, '100': 0, '500': 0, '1000': 0, '2000': 0, '5000': 2 }
+// atm.total; //10100
+// atm.collect; // { '50': 2, '100': 0, '500': 0, '1000': 0, '2000': 0, '5000': 2 }
