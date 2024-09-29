@@ -56,6 +56,6 @@ analyticsClient.queueEvent({
   args: { scrollDepth: 300 }
 });
 
-// analyticsClient.sendNow();
+analyticsClient.sendNow();
 
 console.log(analyticsClient);
