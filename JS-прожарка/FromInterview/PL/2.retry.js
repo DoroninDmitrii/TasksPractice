@@ -53,7 +53,7 @@ function retryFetch(url, options, attempts) {
   }
 
   return fetch(url, options)
-    .then(response => {
+  .then(response => {
       
       if (response.status === 401 || response.status === 403) {
         return Promise.reject(new Error('Unauthorized or Forbidden'));

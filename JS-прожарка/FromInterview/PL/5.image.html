@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <main>
+    <div id="image-container"></div>
+    <button id="image-loading-button">
+        Load Image
+    </button>
+  </main>
+
+<script>
+    const button = document.getElementById('image-loading-button');
+    const container = document.getElementById('image-container');
+
+    const loadImage = () => {
+      container.innerHTML = '';
+
+      const img = document.createElement('img');
+      
+      img.style.width = '500px';
+      img.style.height = '150px';
+      img.style.backgroundColor = 'green';
+      img.src = 'https://random.imagecdn.app/500/150.jpg';
+
+      img.onload = () => {
+        console.log('image loaded');
+      }
+
+      img.onerror = () => {
+        image.style.backgroundColor = 'red';
+      }
+
+      container.append(img);
+    }
+
+    button.addEventListener('click', loadImage);
+</script>
+  
+</body>
+</html>
