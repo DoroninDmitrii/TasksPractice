@@ -45,29 +45,49 @@
 //   });
 
 
+// function retryFetch(url, options, attempts) {
+//   const { method = 'GET' } = options;
+
+//   if (method === 'PUT') {
+//     return fetch(url, options)
+//   }
+
+//   return fetch(url, options)
+//   .then(response => {
+
+//       if (response.status === 401 || response.status === 403) {
+//         return Promise.reject(new Error('Unauthorized or Forbidden'));
+//       }
+
+//       if (response.ok) {
+//         return response;
+//       }
+//     })
+//     .catch(error => {
+//       if (attempts === 0) {
+//         return Promise.reject(error);
+//       }
+//       return retryFetch(attempts - 1);
+//     })
+// }
+
+
 function retryFetch(url, options, attempts) {
-  const { method = 'GET' } = options;
-
-  if (method === 'PUT') {
-    return fetch(url, options)
-  }
-
   return fetch(url, options)
-  .then(response => {
-      
-      if (response.status === 401 || response.status === 403) {
-        return Promise.reject(new Error('Unauthorized or Forbidden'));
-      }
+    .then(response => {
 
       if (response.ok) {
         return response;
+      } else {
+        throw response;
       }
     })
     .catch(error => {
-      if (attempts === 0) {
-        return Promise.reject(error);
+      if (attempts > 1 && error.status !== 401 && error.status !== 403 && options.method !== 'PUT') {
+        return retryFetch(url, options, attempts - 1);
+      } else {
+        throw error;
       }
-      return retryFetch(attempts - 1);
     })
 }
 
