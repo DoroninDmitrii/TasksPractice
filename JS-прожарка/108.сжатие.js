@@ -19,3 +19,4 @@ const compress = (nums) => {
 
 
 console.log(compress([3, 2, 1, 5, 6, -1, 10])); // '-1,1-3,5-6,10' 
+
