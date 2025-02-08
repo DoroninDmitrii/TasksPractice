@@ -34,7 +34,7 @@ lruCache.put(1, 'one');
 lruCache.put(2, 'two');
 console.log(lruCache.get(1));
 console.log(lruCache.get(2));
-lruCache.put(3, 'three'); 
+lruCache.put(3, 'three');
 // console.log(lruCache.get(2)); 
 
 console.log(lruCache.cache)
