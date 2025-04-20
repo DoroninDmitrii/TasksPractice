@@ -1,6 +1,11 @@
+// const statistics = [
+//   [{ userId: 1, steps: 1000 }, { userId: 2, steps: 1500 }],
+//   [{ userId: 2, steps: 1000 }]
+// ]
+
 const statistics = [
-  [{ userId: 1, steps: 1000 }, { userId: 2, steps: 1500 }],
-  [{ userId: 2, steps: 1000 }]
+  [{ userId: 1, steps: 2000 }, { userId: 2, steps: 1500 }],
+  [{ userId: 2, steps: 8000 }, { userId: 1, steps: 3500 }]
 ]
 
 // champions = { userIds: [2], steps: 2500 }
@@ -48,3 +53,4 @@ const steps = (statistics) => {
 };
 
 console.log(steps(statistics));
+
