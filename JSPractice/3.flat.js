@@ -6,7 +6,7 @@ function flat(arr, depth = 1) {
   for (let i = 0; i < arr.length; i++) {
     const current = arr[i];
 
-    if (Array.isArray(current)) {
+    if (Array.isArray(current) && depth > 0) {
       result.push(...flat(current, depth - 1));
     } else {
       result.push(current);
