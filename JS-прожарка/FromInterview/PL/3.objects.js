@@ -47,3 +47,18 @@ console.log(x);
 // What happens: This function directly reassigns the global variable x to 5. This overwrites the reference to the original object, so x is no longer the object {a: 5, b: 2} but now the primitive value 5.
 
 // Log after fn4(): 5
+
+// В функцию fn3 передаётся аргумент x, который ссылается на объект { a: 5, b: 2 }.
+
+// Однако переменная x внутри функции — это копия ссылки.
+
+// То есть: внутри fn3, x — локальная переменная, унаследовавшая значение (ссылку) от внешнего x.
+
+// Когда ты пишешь x = 5, ты меняешь только локальную копию.
+
+// Внешний x (вне функции) остается неизменным.
+
+// let x = { a: 1 };
+// let y = x; // y — копия ссылки на x
+// y = 5;     // теперь y указывает на число, x — всё ещё объект
+// console.log(x); // { a: 1 }
