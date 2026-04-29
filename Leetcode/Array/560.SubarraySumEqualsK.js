@@ -1,4 +1,4 @@
-const nums = [1, 1, 2, 3, 2];
+const nums = [2,-1,1,2];
 const k = 2;
 
 const subarraySum = function (nums, k) {
