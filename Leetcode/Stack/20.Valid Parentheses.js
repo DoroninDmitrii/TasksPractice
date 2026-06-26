@@ -95,10 +95,10 @@ const input1 = "()";
 // console.log(isValid(input1)); // Output: true
 
 const input2 = "()[]{}";
-// console.log(isValid(input2)); // Output: true
+console.log(isValid(input2)); // Output: true
 
 const input3 = "(]";
-console.log(isValid(input3)); // Output: false
+// console.log(isValid(input3)); // Output: false
 
 const input4 = "([)]";
 // console.log(isValid(input4)); // Output: false

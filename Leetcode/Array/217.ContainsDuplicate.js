@@ -28,25 +28,37 @@ const nums = [2, 14, 18, 22, 22];
 
 // console.log(containsDuplicate(nums));
 
-const containsDuplicate = function (nums) {
-  const map = new Map();
+// const containsDuplicate = function (nums) {
+//   const map = new Map();
 
-  for (let i = 0; i < nums.length; i++) {
-    const current = nums[i];
+//   for (let i = 0; i < nums.length; i++) {
+//     const current = nums[i];
 
-    if (map.has(current)) {
-      map.set(current, map.get(current) + 1);
-    } else {
-      map.set(current, 1);
-    }
-  }
+//     if (map.has(current)) {
+//       map.set(current, map.get(current) + 1);
+//     } else {
+//       map.set(current, 1);
+//     }
+//   }
   
-  for (let [key, value] of map) {
-    if (value > 1) {
-      return true;
+//   for (let [key, value] of map) {
+//     if (value > 1) {
+//       return true;
+//     }
+//   }
+//   return false;
+// };
+
+const containsDuplicate = function (nums) {
+    const arr = new Set();
+
+    for (let i = 0; i < nums.length; i++) {
+      if (arr.has(nums[i])) {
+          return true;
+      }
+      arr.add(nums[i])
     }
-  }
-  return false;
+    return false;
 };
 
 console.log(containsDuplicate(nums));
