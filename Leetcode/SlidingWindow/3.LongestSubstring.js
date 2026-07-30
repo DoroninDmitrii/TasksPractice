@@ -4,7 +4,7 @@
   // const s = "bbbbb"
 // Output: 1
 
-const s = "pwwkew"
+// const s = "pwwkew"
 // Output: 3
 
 
@@ -27,24 +27,50 @@ const s = "pwwkew"
 
 // console.log(lengthOfLongestSubstring(s));
 
-const longestSub = s => {
-  const mapObj = new Set();
-  let length = 0;
-  let index = 0;
+// const longestSub = s => {
+//   const mapObj = new Set();
+//   let length = 0;
+//   let index = 0;
   
-  for (let i = 0; i < s.length; i++) {
-    const current = s[i];
+//   for (let i = 0; i < s.length; i++) {
+//     const current = s[i];
     
-    while (mapObj.has(current)) {
-      mapObj.delete(s[index]);
-      index++
+//     while (mapObj.has(current)) {
+//       mapObj.delete(s[index]);
+//       index++
+//     }
+//     mapObj.add(current);
+    
+//     length = Math.max(length, mapObj.size)
+//   }
+//   return length;
+// };
+
+// console.log(longestSub(s));
+
+
+const s = "zxyzxyz";
+
+// Output: 3
+
+
+const lengthOfLongestSubstring = (s) => {
+  const charSet = new Set();
+  let left = 0;
+  let res = 0;
+
+  
+  for (let right = 0; right < s.length; right++) {
+
+    while (charSet.has(s[right])) {
+      charSet.delete(s[left]);
+      left++;
     }
-    mapObj.add(current);
-    
-    length = Math.max(length, mapObj.size)
+    charSet.add(s[right]);
+
+    res = Math.max(res, right - left + 1);
   }
-  return length;
-};
+  return res;
+}
 
-console.log(longestSub(s));
-
+  console.log(lengthOfLongestSubstring(s));
