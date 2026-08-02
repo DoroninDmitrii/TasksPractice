@@ -1,0 +1,26 @@
+const asteroids = [2,4,-4,-1];
+
+const asteroidCollision = (asteroids) => {
+    const stack = [];
+
+    for (let a of asteroids) {
+      while (stack.length && a < 0 && stack[stack.length - 1] > 0) {
+        const diff = a + stack[stack.length - 1];
+
+        if (diff < 0) {
+          stack.pop();
+        } else if (diff > 0) {
+          a = 0;
+        } else {
+          a = 0;
+          stack.pop();
+        }
+      }
+      if (a !== 0) {
+        stack.push(a)
+      }
+    }
+  return stack;
+}
+
+console.log(asteroidCollision(asteroids));
